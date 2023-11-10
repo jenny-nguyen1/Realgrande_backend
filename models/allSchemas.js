@@ -1,75 +1,70 @@
 const mongoose = require("mongoose");
 
-const HouseSchema = mongoose.Schema(
-{
-    _id: Number,
-    address: String,
-    county: String,
-    description: String,
-    price: Number,
-    photo: String
+const HouseSchema = mongoose.Schema({
+  _id: Number,
+  address: String,
+  county: String,
+  description: String,
+  price: Number,
+  photo: String,
 });
 
-const UserSchema = new mongoose.Schema(
-{
-    name: {
-    type: String,
-    required: true
-    },
-    email: {
+const UserSchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true,
-    index:{unique:true}
-    },
-    password: {
+  },
+  email: {
     type: String,
-    required: true
-    },
-    gender: {
+    required: true,
+    index: { unique: true },
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  gender: {
     type: String,
     enum: ["Male", "Female", "Rather Not Say"],
-    default: "Rather Not Say"
-    },
-    role: {
+    default: "Rather Not Say",
+  },
+  role: {
     type: String,
     enum: ["customer", "realtor"],
-    default: "customer"
-    }
+    default: "customer",
+  },
 });
-  
-const EnquirySchema = new mongoose.Schema(
-{
-    ename:{
-    type:String,
-    required: true
-    },
-    email: {
+
+const EnquirySchema = new mongoose.Schema({
+  ename: {
     type: String,
-    required: true
-    },
-    remarks: {
+    required: true,
+  },
+  email: {
     type: String,
-    required: true
-    },
-    date: {
+    required: true,
+  },
+  remarks: {
+    type: String,
+    required: true,
+  },
+  date: {
     type: Date,
-    default: Date.now
-    },
+    default: Date.now,
+  },
 });
 
-const EntrySchema = mongoose.Schema(
-    {
-        _id: Number,
-        address: String,
-        county: String,
-        description: String,
-        price: Number,
-        photo: String
-    });
-    
+const EntrySchema = mongoose.Schema({
+  _id: Number,
+  address: String,
+  county: String,
+  description: String,
+  price: Number,
+  photo: String,
+});
 
-const Houses=mongoose.model('House',HouseSchema)
-const Users=mongoose.model('User',UserSchema)
-const Enquiries=mongoose.model('Enquiry',EnquirySchema)
+const Houses = mongoose.model("House", HouseSchema);
+const Users = mongoose.model("User", UserSchema);
+const Enquiries = mongoose.model("Enquiry", EnquirySchema);
 
-module.exports={Houses,Users,Enquiries}
+module.exports = { Houses, Users, Enquiries };
